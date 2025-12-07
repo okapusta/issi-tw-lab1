@@ -21,7 +21,7 @@ function Movies() {
   var list = [];
 
   function add(movie) {
-    list.push(movie);
+    if (movie.isValid) list.push(movie);
   }
 
   function remove(movieId) {
@@ -48,15 +48,14 @@ function getInputValue(target, name) {
 // Event listeners
 function onAddMovie(event) {
   event.preventDefault();
+
   var title = getInputValue(event.target, 'title');
   var year = getInputValue(event.target, 'year');
   var actors = getInputValue(event.target, 'actors');
-
   var movie = new Movie(title, year, actors);
-  if (movie.isValid) {
-    movies.add(movie);
-    renderMovies();
-  }
+
+  movies.add(movie);
+  renderMovies();
 }
 
 function onDeleteMovies() {
