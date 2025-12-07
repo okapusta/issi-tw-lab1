@@ -20,21 +20,21 @@ function Movie(title, year, actors) {
 function Movies() {
   var list = [];
 
-  function addMovie(movie) {
+  function add(movie) {
     list.push(movie);
   }
 
-  function removeMovie(movieId) {
+  function remove(movieId) {
     var toBeRemoved = list.findIndex(function (el) {
-      return el.id === movieId;
+      return el.id == movieId;
     });
     list.splice(toBeRemoved, 1);
   }
 
   return {
     list,
-    addMovie,
-    removeMovie,
+    add,
+    remove,
   }
 }
 
@@ -54,7 +54,7 @@ function onAddMovie(event) {
 
   var movie = new Movie(title, year, actors);
   if (movie.isValid) {
-    movies.addMovie(movie);
+    movies.add(movie);
     renderMovies();
   }
 }
@@ -62,7 +62,7 @@ function onAddMovie(event) {
 function onDeleteMovies() {
   var moviesToDelete = document.querySelectorAll("input[type='checkbox']:checked");
   moviesToDelete.forEach(function(movie) {
-    movies.removeMovie(movie.id);
+    movies.remove(movie.getAttribute('data-id'));
   });
   renderMovies();
 }
@@ -80,9 +80,9 @@ var matrix = new Movie("The Matrix", "1999", "Keanu Reeves, Laurence Fishbourne"
 var indiana = new Movie("Indiana Jones", "1989", "Harrison Ford, Sean Connery")
 var casino = new Movie("Casino Royale", "2006", "Daniel Craig, Eva Green")
 
-movies.addMovie(matrix);
-movies.addMovie(indiana);
-movies.addMovie(casino);
+movies.add(matrix);
+movies.add(indiana);
+movies.add(casino);
 
 
 // Render movie list
