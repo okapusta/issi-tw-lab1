@@ -14,7 +14,6 @@ function Movies() {
 
   function addMovie(movie) {
     list.push(movie);
-    console.log('dupa', list)
   }
 
   function removeMovie(movieId) {
