@@ -1,15 +1,19 @@
 function Movie(title, year, actors) {
   var id = Math.random();
+  var isValid = false;
 
   if (!title) return alert("Title must be present");
   if (!year) return alert("Year must be present");
   if (!actors) return alert("Actors must be present");
 
+  isValid = true;
+
   return {
     id,
     title,
     year,
-    actors
+    actors,
+    isValid,
   }
 }
 
@@ -49,8 +53,10 @@ function onAddMovie(event) {
   var actors = getInputValue(event.target, 'actors');
 
   var movie = new Movie(title, year, actors);
-  movies.addMovie(movie);
-  renderMovies();
+  if (movie.isValid) {
+    movies.addMovie(movie);
+    renderMovies();
+  }
 }
 
 function onDeleteMovies() {
