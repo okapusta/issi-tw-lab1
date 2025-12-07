@@ -1,5 +1,5 @@
 function Movie(title, year, actors) {
-  var id = Date.now();
+  var id = Math.random();
 
   return {
     id,
@@ -49,6 +49,14 @@ function onAddMovie(event) {
   renderMovies();
 }
 
+function onDeleteMovies() {
+  var moviesToDelete = document.querySelectorAll("input[type='checkbox']:checked");
+  moviesToDelete.forEach(function(movie) {
+    movies.removeMovie(movie.id);
+  });
+  renderMovies();
+}
+
 // Bindings
 var form = document.getElementById("add-movie-form");
 if (form) {
@@ -76,7 +84,7 @@ function renderMovies() {
     // Add movies
     movies.list.forEach(function(movie) {
     var li = document.createElement("li");
-    li.innerHTML = `<input type='checkbox'> ${movie.title}, ${movie.year}, ${movie.actors}`;
+    li.innerHTML = `<input type='checkbox' data-id='${movie.id}'> ${movie.title}, ${movie.year}, ${movie.actors}`;
     movieContainer.appendChild(li);
   });
 }
