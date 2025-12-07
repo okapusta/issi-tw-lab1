@@ -1,6 +1,10 @@
 function Movie(title, year, actors) {
   var id = Math.random();
 
+  if (!title) return alert("Title must be present");
+  if (!year) return alert("Year must be present");
+  if (!actors) return alert("Actors must be present");
+
   return {
     id,
     title,
