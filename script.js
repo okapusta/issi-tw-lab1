@@ -1,19 +1,21 @@
 function Movie(title, year, actors) {
-  var id = Math.random();
-  var isValid = false;
+  var id;
+
+  function generateUUID() {
+    return Math.floor(Math.random() * Date.now()).toString(36);
+  }
 
   if (!title) return alert("Title must be present");
   if (!year) return alert("Year must be present");
   if (!actors) return alert("Actors must be present");
 
-  isValid = true;
+  id = generateUUID();
 
   return {
     id,
     title,
     year,
     actors,
-    isValid,
   }
 }
 
@@ -21,7 +23,7 @@ function Movies() {
   var list = [];
 
   function add(movie) {
-    if (movie.isValid) list.push(movie);
+    if (movie.id) list.push(movie);
   }
 
   function remove(movieId) {
