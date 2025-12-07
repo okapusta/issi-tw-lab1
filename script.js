@@ -89,10 +89,10 @@ movies.addMovie(casino);
 var movieContainer = document.getElementById('movie-list');
 
 function renderMovies() {
-    // Clean container
-    movieContainer.innerHTML = '';
-    // Add movies
-    movies.list.forEach(function(movie) {
+  // Clean container
+  movieContainer.innerHTML = '';
+  // Add movies
+  movies.list.forEach(function(movie) {
     var li = document.createElement("li");
     li.innerHTML = `<input type='checkbox' data-id='${movie.id}'> ${movie.title}, ${movie.year}, ${movie.actors}`;
     movieContainer.appendChild(li);
